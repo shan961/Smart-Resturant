@@ -1,0 +1,211 @@
+/* Custom CSS Variables for Restaurant Theme */
+:root {
+    --primary-color: #f7a94f; /* Warm Amber/Gold */
+    --accent-color: #e67e22; /* Deeper Orange */
+    --text-color-light: #f5f5f5;
+    --text-color-dark: #333;
+    --background-blur: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.3);
+    --bot-bg: linear-gradient(135deg, rgba(247, 169, 79, 0.8), rgba(230, 126, 34, 0.8)); /* Warm gradient for bot messages */
+    --user-bg: rgba(255, 255, 255, 0.9); /* Light, crisp user bubble */
+}
+
+/* Ensure full height for scrolling calculation */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Soft background gradient to simulate restaurant ambiance */
+    background: linear-gradient(135deg, #4b4b4b, #2c3e50);
+    color: var(--text-color-light);
+    transition: background 0.5s;
+}
+
+/* --- Chatbot Container (The Glass Pane) --- */
+.chatbot-container {
+    /* FIX: Use max-height for responsive sizing, replacing static height */
+    width: 420px; 
+    max-height: 90vh; /* Takes up 90% of the viewport height */
+    min-height: 500px; 
+    
+    background: var(--background-blur);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column; /* CRITICAL for vertical alignment */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Header Styling --- */
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    color: var(--text-color-light) !important; /* Ensures all header text is visible */
+}
+
+.bot-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    margin-right: 15px;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.header-text h1 {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-color-light) !important; /* Ensures H1 is visible */
+}
+
+.header-text p {
+    font-size: 0.8em;
+    margin: 2px 0 0 0;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* --- Chat History and Messages --- */
+.chat-history {
+    flex-grow: 1; /* CRITICAL for taking up middle space */
+    overflow-y: auto;
+    padding-right: 10px;
+    
+    /* FIX: Force content to start from the bottom using Flexbox reversal */
+    display: flex;
+    flex-direction: column-reverse; 
+    
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+.chat-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    max-width: 85%;
+    border-radius: 18px;
+    line-height: 1.4;
+    font-size: 0.95em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.bot-message {
+    background: var(--bot-bg);
+    color: var(--text-color-light);
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+    margin-right: auto;
+}
+
+.user-message {
+    background: var(--user-bg);
+    color: var(--text-color-dark);
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 3px;
+}
+
+/* --- Input Area --- */
+.chat-input-area {
+    display: flex;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color-light);
+    font-size: 1em;
+    margin-right: 10px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.message-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.message-input:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.send-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    box-shadow: 0 4px 10px rgba(247, 169, 79, 0.4);
+}
+
+.send-button:hover {
+    background: var(--accent-color);
+}
+
+.send-button svg {
+    width: 20px;
+    height: 20px;
+    transform: translateX(2px);
+}
+
+/* --- Typing Indicator/Loading State --- */
+.typing-indicator {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-color-light);
+    font-style: italic;
+    font-size: 0.85em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+    /* Ensure indicator stays at the 'bottom' of the reversed list */
+    order: -1; 
+}
+.typing-indicator.show {
+    opacity: 1;
+}

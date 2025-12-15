@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Restaurant AI Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="chatbot-container">
+        <header class="chat-header">
+            <div class="bot-avatar">🍽️</div>
+            <div class="header-text">
+                <h1>Smart Restaurant Assistant</h1>
+                <p>How can I help you with your meal plans today?</p>
+            </div>
+        </header>
+
+        <div class="chat-history" id="chat-history">
+            <div class="message bot-message">
+                Welcome! I can tell you the menu, plan your meal, or give food advice. Try asking, "What's for lunch?"
+            </div>
+            </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Type your request (e.g., 'Plan a vegan dinner')" class="message-input" autocomplete="off">
+            <button id="send-button" class="send-button">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3v8l9 1-9 1z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
